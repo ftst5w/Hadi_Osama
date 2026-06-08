@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>متاهة العقل</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="crt-overlay"></div>
+    <div id="vignette"></div>
+
+    <div id="app">
+        <!-- Main Menu -->
+        <section id="screen-menu" class="screen active">
+            <h1 class="glitch" data-text="متاهة العقل">متاهة العقل</h1>
+            <p class="subtitle">هل يمكنك النجاة من الـ 10 غرف؟</p>
+            <div class="menu-buttons">
+                <button id="btn-play" class="btn primary" data-i18n="start_game">ابدأ الكابوس</button>
+                <button id="btn-settings" class="btn" data-i18n="settings">الإعدادات</button>
+                <button id="btn-reset" class="btn danger" data-i18n="delete_progress">حذف التقدم</button>
+            </div>
+            <div class="secret-stars-counter" style="display:none;">الأخطاء: <span id="error-counter">0</span></div>
+            
+
+        </section>
+        <section id="screen-settings" class="screen">
+            <h1 data-i18n="settings">الإعدادات</h1>
+            <div class="settings-group">
+                <label data-i18n="language">اللغة:</label>
+                <div class="lang-switch">
+                    <button class="btn small" onclick="setLanguage('ar')">العربية</button>
+                    <button class="btn small" onclick="setLanguage('en')">English</button>
+                </div>
+            </div>
+            <button id="btn-settings-back" class="btn" data-i18n="back">رجوع</button>
+        </section>
+
+        <!-- Level Map -->
+        <section id="screen-map" class="screen">
+            <div class="map-header">
+                <button id="btn-map-back" class="btn small">رجوع</button>
+                <h2>خريطة الرعب</h2>
+                <div class="stars-total">⭐ <span id="total-stars">0</span>/30</div>
+            </div>
+            <div class="map-container" id="map-container">
+                <div class="map-path" id="map-path">
+                    <!-- Nodes will be generated here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Question Screen -->
+        <section id="screen-question" class="screen">
+            <div class="hud">
+                <button id="btn-question-back" class="btn small" data-i18n="back">رجوع</button>
+                <div class="level-info">مرحلة <span id="q-level">1</span></div>
+                <div class="timer" id="q-timer">الوقت: 15</div>
+            </div>
+            <div class="question-container">
+                <h3 id="q-text">نص السؤال هنا...</h3>
+                <div class="options-grid" id="q-options">
+                    <!-- Options generated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Minigame Wrapper -->
+        <section id="screen-minigame" class="screen">
+            <div class="hud">
+                <div class="level-info" id="mg-title">اسم اللعبة</div>
+                <div class="timer" id="mg-timer">الوقت: --</div>
+            </div>
+            <div id="minigame-container">
+                <!-- Minigame injects its DOM here or uses canvas -->
+                <canvas id="mg-canvas" width="800" height="600"></canvas>
+                <div id="mg-dom"></div>
+            </div>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="screen-result" class="screen">
+            <img id="win-scary-img" src="assets/scare.png" style="display:none; width: 100%; max-width: 400px; margin-bottom: 20px; border: 2px solid red;">
+            <h1 id="result-title">انتهت اللعبة</h1>
+            <p id="result-msg">رسالة...</p>
+            <div class="stars-earned" id="result-stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <button id="btn-result-next" class="btn primary">متابعة</button>
+        </section>
+
+        <!-- Victory Screen -->
+        <section id="screen-victory" class="screen">
+            <h1 class="glitch" data-text="لقد هربت من المتاهة!" style="color: gold; text-shadow: 0 0 20px gold;">لقد هربت من المتاهة!</h1>
+            <div class="victory-image-container">
+                <img src="assets/scare3.png" alt="VICTORY" class="victory-img">
+            </div>
+            <p id="victory-msg" style="font-size: 1.5rem; margin: 20px 0; text-align: center; color: #fff; max-width: 80%"></p>
+            <button id="btn-victory-reset" class="btn danger small">إعادة اللعب</button>
+            <button id="btn-victory-menu" class="btn">القائمة الرئيسية</button>
+        </section>
+    </div>
+
+    <!-- Jumpscare -->
+    <div id="jumpscare" class="overlay">
+        <img id="jumpscare-img" src="assets/scare.png" alt="SCARE">
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

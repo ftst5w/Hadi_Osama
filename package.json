@@ -1,0 +1,11 @@
+{
+  "name": "mind-maze-horror-quiz",
+  "version": "1.0.0",
+  "description": "A psychological horror quiz game.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Antigravity",
+  "license": "MIT"
+}
